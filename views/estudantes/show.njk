@@ -1,0 +1,65 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+    <div class="card">
+        
+        <section 
+            class="imagem" 
+            style="background: url({{estudante.avatar_url}}) no-repeat center center/ cover">
+        </section>
+        <section class=dados>
+            <h2>Estudante</h2>
+
+            <div class="item">
+                <div>Nome completo</div>
+                <div>{{estudante.name}}</div>
+            </div>
+
+            <div class="item">
+                <div>Email</div>
+                <div>{{estudante.email}}</div>
+            </div>
+
+            <div class="item">
+                <div>Idade</div>
+                <div>{{estudante.age}} anos</div>
+            </div>
+
+            <div class="item">
+                <div>Aniversário</div>
+                <div>{{estudante.birthDay}}</div>
+            </div>
+
+            <div class="item">
+                <div>Ano escolar</div>
+                <div>{{estudante.escolaridade}}</div>
+            </div>
+            
+            <div class="item">
+                <div>Carga horária semanal</div>
+                <div>{{estudante.ch}} horas</div>
+            </div>
+
+            <div class="buttons">
+                <a href="/estudantes/{{estudante.id}}/edit" class="button">Editar</a>
+                <form id="formDelete" action="/estudantes?_method=DELETE" method="post">
+                    <input type="hidden" name="id" value = {{estudante.id}}>
+                    <button type="submit" class="btDelete">Deletar</button>
+                </form>
+            </div>
+
+            <script>
+                const formDelete = document.querySelector("#formDelete");
+                formDelete.addEventListener("submit" , function(event){
+                    const confirmation = confirm("Deseja realmente excluir este estudante?")
+                    if (!confirmation){
+                        event.preventDefault();
+                    }
+                })
+            </script>
+
+        </section>
+    </div>
+
+{% endblock content %}

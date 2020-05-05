@@ -1,0 +1,19 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="card">
+    <section 
+        class="imagem" 
+        style="background: url('https://source.unsplash.com/collection/1795800/200x200') no-repeat center center/ cover">
+    </section>
+    <section class=dados>
+        <form method="POST" action="/professores">
+            <h2>Novo Professor</h2>
+
+            {% include 'professores/fields.njk' %}
+
+        </form>
+    </section>
+</div>
+
+{% endblock content %}

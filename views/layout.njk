@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>Sistema Aluno/Professor</title>
+    {% endblock title %}
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+    
+    <header>
+        <div class="links">
+            <a href="/professores">Professores</a>
+            <a href="/estudantes">Alunos</a>
+        </div>
+    </header>
+    <div class="border"></div>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <script src="/scripts.js"></script>
+
+</body>
+</html>
