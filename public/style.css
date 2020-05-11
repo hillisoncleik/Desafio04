@@ -241,11 +241,7 @@ tbody td{
     box-shadow: 3px 3px 7px -3px rgb(150, 150, 150);
 }
 
-.table-container > a{
-    margin-bottom: 10px;
-    margin-left: 15px;
-    display: inline-block;
-}   
+ 
 
 
 tbody tr td:first-child{
@@ -267,4 +263,51 @@ tbody tr td:first-child span{
 .table-container thead tr th,
 td{
     text-align: center;
+}
+
+/*FILTERS*/
+.table-container .header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.table-container .header form{
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-container .header a,
+.table-container .header button{
+    padding: 0;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: var(--terciaria);
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 7px -3px black;
+    margin-top: 0;
+    width: 120px;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.table-container .header a{
+    padding-top: 6px;
+}
+
+.table-container .header input{
+    border: 1px solid var(--terciaria);
+    border-radius: 4px;
+    padding: 1px 8px;
+    box-sizing: border-box;
+}
+
+.table-container .header{
+    margin-bottom: 30px;
 }

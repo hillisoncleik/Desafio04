@@ -9,7 +9,10 @@ module.exports = {
         })
     },
     create (req , res) {
-        return res.render('./estudantes/create')
+        Student.teacherSelect(function (options) {
+            
+            return res.render('./estudantes/create' , {teacherOpt: options})
+        })
     },
     post (req , res) {
         //validação de todos os dados preenchidos
@@ -40,8 +43,13 @@ module.exports = {
 
         Student.find(req.params.id , function (estudante) {
             if (!estudante) return res.send("Estudante não encontrado!!!")
+
             estudante.birth = date(estudante.birth).iso
-            return res.render("estudantes/edit" , {estudante})
+            Student.teacherSelect(function (options) {
+            
+                return res.render("estudantes/edit" , {estudante , teacherOpt: options})
+            })
+
         })
 
     },
