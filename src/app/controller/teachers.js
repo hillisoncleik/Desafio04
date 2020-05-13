@@ -3,18 +3,38 @@ const {age , date} = require('../../lib/util')
 
 module.exports = {
     index (req , res) {
-        const {filter} = req.query
+        let {filter , page , limit} = req.query
 
-        if (filter){
-            Teacher.findBy(filter , function (professores) {
-                return res.render('professores/index' , {professores , filter})
-            })
+        page = page || 1
+        limit = limit || 3
+
+        let offset = limit * (page -1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(professores){
+                const pagination = {
+                    total: Math.ceil(professores[0].total / limit),
+                    page
+                }
+                return res.render('professores/index' , {professores , pagination , filter})
+            }
         }
-        else{
-            Teacher.all(function (professores) {
-                return res.render('professores/index' , {professores})
-            })
-        }
+
+        Teacher.paginate(params)
+        // if (filter){
+        //     Teacher.findBy(filter , function (professores) {
+        //         return res.render('professores/index' , {professores , filter})
+        //     })
+        // }
+        // else{
+        //     Teacher.all(function (professores) {
+        //         return res.render('professores/index' , {professores})
+        //     })
+        // }
     },
     create (req , res) {
         return res.render('./professores/create')

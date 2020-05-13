@@ -308,6 +308,56 @@ td{
     box-sizing: border-box;
 }
 
-.table-container .header{
-    margin-bottom: 30px;
+
+/*PAGINAS*/
+.table-container{
+    display: grid;
+    grid-template: 60px 1fr 50px / 1fr;
+}
+
+.table-container .pagination{
+    justify-self: center;
+    position: relative;
+}
+
+.table-container .pagination span,
+.table-container .pagination a{
+    background: none;
+    color: var(--secundaria);
+    font-size: 16px;
+    box-shadow: none;
+    font-weight: 400;
+    width: 30px;
+    height: 30px;
+    padding: 0.9vh 0.6vw;
+    border-radius: 5px;
+    box-sizing: border-box;
+    
+}
+
+.arrow_l{
+    position: absolute;
+    left: -40px;
+    top: -17px;
+    cursor: pointer;
+}
+
+.arrow_r{
+    position: absolute;
+    right: -15px;
+    top: -17px;
+    cursor: pointer;
+}
+
+.table-container .pagination a:hover{
+    color: var(--terciaria);
+    font-weight: bold;
+}
+
+.table-container .pagination a.active{
+    border: 1px solid var(--terciaria);
+}
+
+.pagination .material-icons{
+    font-size: 40px;
 }
