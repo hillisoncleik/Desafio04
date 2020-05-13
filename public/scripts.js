@@ -42,7 +42,7 @@ if (pagination){
 
     let elements = ""
     if (page!=1){
-        elements += `<a href="professores?filter=${filter}&page=${page-1}" class="arrow_l"><i class="material-icons">arrow_left</i></a>`
+        elements += `<a href="?filter=${filter}&page=${page-1}" class="arrow_l"><i class="material-icons">arrow_left</i></a>`
     }
 
     for (let pag of pages){
@@ -52,18 +52,18 @@ if (pagination){
         else{
             if (pag == page){
                 if (filter){
-                    elements += `<a href="professores?filter=${filter}&page=${pag}" class="active">${pag}</a>`
+                    elements += `<a href="?filter=${filter}&page=${pag}" class="active">${pag}</a>`
                 }
                 else{
-                    elements += `<a href="professores?page=${pag}" class="active">${pag}</a>`
+                    elements += `<a href="?page=${pag}" class="active">${pag}</a>`
                 }
             }
             else{
                 if (filter){
-                    elements += `<a href="professores?filter=${filter}&page=${pag}">${pag}</a>`
+                    elements += `<a href="?filter=${filter}&page=${pag}">${pag}</a>`
                 }
                 else{
-                    elements += `<a href="professores?page=${pag}">${pag}</a>`
+                    elements += `<a href="?page=${pag}">${pag}</a>`
                 }
             }
             
@@ -72,7 +72,7 @@ if (pagination){
         
     }
     if (page!=total){
-        elements += `<a href="professores?filter=${filter}&page=${page+1}" class="arrow_r"><i class="material-icons">arrow_right</i></a>`
+        elements += `<a href="?filter=${filter}&page=${page+1}" class="arrow_r"><i class="material-icons">arrow_right</i></a>`
     }
     pagination.innerHTML = elements
     console.log(elements)

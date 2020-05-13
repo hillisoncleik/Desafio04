@@ -25,16 +25,7 @@ module.exports = {
         }
 
         Teacher.paginate(params)
-        // if (filter){
-        //     Teacher.findBy(filter , function (professores) {
-        //         return res.render('professores/index' , {professores , filter})
-        //     })
-        // }
-        // else{
-        //     Teacher.all(function (professores) {
-        //         return res.render('professores/index' , {professores})
-        //     })
-        // }
+        
     },
     create (req , res) {
         return res.render('./professores/create')

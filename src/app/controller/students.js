@@ -4,9 +4,31 @@ const {age , date} = require('../../lib/util')
 module.exports = {
     index (req , res) {
 
-        Student.all(function (estudantes) {
-            return res.render('estudantes/index' , {estudantes})
-        })
+        let {filter , page , limit} = req.query
+
+        page = page || 1
+        limit = limit || 2
+
+        let offset = limit * (page -1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(estudantes){
+                const pagination = {
+                    total: Math.ceil(estudantes[0].total / limit),
+                    page
+                }
+                return res.render('estudantes/index' , {estudantes , pagination , filter})
+            }
+        }
+
+        Student.paginate(params)
+        // Student.all(function (estudantes) {
+        //     return res.render('estudantes/index' , {estudantes})
+        // })
     },
     create (req , res) {
         Student.teacherSelect(function (options) {
